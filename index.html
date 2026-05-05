@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>7橋牌算分網站</title>
+<title>8橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -38,6 +38,8 @@ function showNumber() {
     document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles+"結果"+Gresult;
 }
 function showpoints(){
+   let isChecked = document.getElementById("bodyprice").checked;
+   let doubles = document.getElementById("doubles").value; 
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();  
@@ -48,8 +50,9 @@ function showpoints(){
     document.getElementById("points").innerText = `倒${Gresult-input}敦，失去${a}分`;
     return 0;
   }
-    let totalscore=roundP+prizepointscore;
-    document.getElementById("points").innerText = `每敦分數共${roundP}，獎分${prizepointscore}，共${totalscore}分`;
+  let over=countextra(select,(Gresult-input),doubles,isChecked);
+    let totalscore=roundP+prizepointscore+over;
+    document.getElementById("points").innerText = `每敦分數共${roundP}，獎分${prizepointscore}，超敦分${over}，共${totalscore}分`;
   }
   function countroundP(){
     let input = parseInt(document.getElementById("numberInput").value);    
@@ -106,6 +109,26 @@ return bonus;
     else{
       return 100*(input-Gresult)*(2**doubles);
     }
+  }
+  function countextra(type,over,double,vul){
+    let bonus=0;
+    let select=type;
+    if(double==0){
+    if(select=="a"||select=="b"){
+     bonus+=20*over;
+    }
+    if(select=="c"||select=="d"){
+      bonus+=30*over;
+    }
+    if(select=="e"){
+      bonus+=30*over+10;
+    }
+    }
+    else{
+      bonus+=50*over*(2**double);
+      if(vul) bonus*=2;
+    }
+    return bonus;
   }
 </script>
 </body> </html>
