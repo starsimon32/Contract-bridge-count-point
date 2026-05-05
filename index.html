@@ -1,17 +1,27 @@
 <! DOCTYPE html>
 <html>
 <head>
-<title>橋牌算分網站</title>
+<title>橋牌算分網站2</title>
 </head>
 <body>
-  <h1>請輸入你的合約 </h1>
+  <h1>橋牌算分網站 </h1>
   <input type="text" id="numberInput" placeholder="請輸入數字">
+  <select id="mySelect">
+    <option value="">--請選擇--</option>
+    <option value="a">club</option>
+    <option value="b">diamond</option>
+    <option value="c">heart</option>
+    <option value="d">spade</option>
+    <option value="e">NT</option>
+</select>
   <button onclick="showNumber()">計算</button>
   <p id="result"></p>
 <script>
 function showNumber() {
-    let input = document.getElementById("numberInput").value;
-    document.getElementById("result").innerText = "你輸入的是: " + input;
+    let input = document.getElementById("numberInput").value;    
+    let select = document.getElementById("mySelect");
+    let text = select.options[select.selectedIndex].text;
+    document.getElementById("result").innerText = "你輸入的是: " + input + text;
 }
 </script >
 </ body> </html>
