@@ -36,9 +36,10 @@ function showNumber() {
 function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
-    let roundP=countroundP();    
-    let totalscore=roundP;
-    document.getElementById("points").innerText = `每敦分數${roundP}，共${totalscore}分`;
+    let roundP=countroundP();  
+    let prizepointscore=countprizepoints();
+    let totalscore=roundP+prizepointscore;
+    document.getElementById("points").innerText = `每敦分數共${roundP}，獎分${prizepointscore}，共${totalscore}分`;
   }
   function countroundP(){
     let input = parseInt(document.getElementById("numberInput").value);    
@@ -69,7 +70,14 @@ function countprizepoints(){
       else return 1300;
     }
     else if(input==6){
+      if(isChecked)return 1300;
+      else return 800;
     }
+  else if(roundP>=100){
+    if(isChecked)return 500;
+      else return 300;
+  }
+  else return 50;
 return 0;
 
 }
