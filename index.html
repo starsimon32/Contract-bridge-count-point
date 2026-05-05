@@ -37,12 +37,17 @@ function showNumber() {
     }
     document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles+"結果"+Gresult;
 }
-function showpoints(){
+function showpoints()
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();  
     let prizepointscore=countprizepoints();
   let Gresult =parseInt( document.getElementById("Gresult").value);
+  if(Gresult<input){
+    let a=countlosspoint();
+    document.getElementById("points").innerText = `倒${Gresult-input}敦，失去${a}分`;
+    return 0;
+  }
     let totalscore=roundP+prizepointscore;
     document.getElementById("points").innerText = `每敦分數共${roundP}，獎分${prizepointscore}，共${totalscore}分`;
   }
@@ -89,5 +94,18 @@ function countprizepoints(){
 return bonus;
 
 }
+  function countlosspoint(){
+     let input = parseInt(document.getElementById("numberInput").value); 
+    let Gresult = parseInt(document.getElementById("Gresult").value);
+    if(input>=Gresult) return 0;
+    let doubles =parseInt( document.getElementById("doubles").value)||0;
+    let isChecked = document.getElementById("bodyprice").checked;
+    if(ischecked){
+      return 50*(input-Gresult)*(2**doubles);
+    }
+    else{
+      return 100*(input-Gresult)*(2**doubles);
+    }
+  }
 </script >
 </body> </html>
