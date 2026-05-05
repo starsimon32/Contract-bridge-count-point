@@ -1,7 +1,7 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>6橋牌算分網站</title>
+<title>7橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -37,7 +37,7 @@ function showNumber() {
     }
     document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles+"結果"+Gresult;
 }
-function showpoints()
+function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();  
@@ -97,15 +97,15 @@ return bonus;
   function countlosspoint(){
      let input = parseInt(document.getElementById("numberInput").value); 
     let Gresult = parseInt(document.getElementById("Gresult").value);
-    if(input>=Gresult) return 0;
+    if(input<=Gresult) return 0;
     let doubles =parseInt( document.getElementById("doubles").value)||0;
     let isChecked = document.getElementById("bodyprice").checked;
-    if(ischecked){
+    if(isChecked){
       return 50*(input-Gresult)*(2**doubles);
     }
     else{
       return 100*(input-Gresult)*(2**doubles);
     }
   }
-</script >
+</script>
 </body> </html>
