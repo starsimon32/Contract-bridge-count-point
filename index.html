@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
-  <input type="text" id="numberInput" placeholder="請輸入數字">
+  <input type="text" id="numberInput" placeholder="請輸入合約線位">
   <select id="mySelect">
     <option value="">--請選擇--</option>
     <option value="a">club</option>
@@ -15,6 +15,7 @@
     <option value="e">NT</option>
 </select>
   <input type="checkbox" id="bodyprice"> 身價
+  <input type="text" id="doubles" placeholder="請輸入doubles">
   <button onclick="showNumber()">計算</button>
   <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
@@ -25,13 +26,14 @@ function showNumber() {
     let select = document.getElementById("mySelect");
     let text = select.options[select.selectedIndex].text;
     let isChecked = document.getElementById("bodyprice").checked;
+   let doubles = document.getElementById("doubles").value; 
     let text2="";
     if (isChecked) {
         text2="有身價";
     } else {
        text2="沒身價";
     }
-    document.getElementById("result").innerText = "你輸入的是: " + input + text +text2;
+    document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles;
 }
 function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
@@ -45,6 +47,7 @@ function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=0;
+    let doubles = document.getElementById("doubles").value;
     if(select==""){
       document.getElementById("points").innerText = "無效合約";
       return;
@@ -56,21 +59,21 @@ function showpoints(){
       roundP+=30*input;
     }
     if(select=="e"){
-      roundP+=30*input;
+      roundP+=30*input+10;
     }
-    return roundP;
+    return roundP*（2**doubles);
   }
 function countprizepoints(){
     let isChecked = document.getElementById("bodyprice").checked;
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();
-    if(input==7){
+    if(input>=7){
       if(isChecked)return 2000;
       else return 1300;
     }
     else if(input==6){
-      if(isChecked)return 1300;
+      if(isChecked)return 1250;
       else return 800;
     }
   else if(roundP>=100){
