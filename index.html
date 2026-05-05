@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>9橋牌算分網站</title>
+<title>10橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -101,15 +101,13 @@ return bonus;
      let input = parseInt(document.getElementById("numberInput").value); 
     let Gresult = parseInt(document.getElementById("Gresult").value);
     if(input<=Gresult) return 0;
-    let doubles =parseInt( document.getElementById("doubles").value)||0;
-    let isChecked = document.getElementById("bodyprice").checked;
     if(doubles==0){
       let a=50*loss;
       if(vul) a*=2;
       return a;
     }
     if(vul){
-      return 300*(loss)*(2**(doubles-1))-loss*100;
+      return -250*double - 300*loss + 450*double*loss + 300;
     }
     if(vul==0 && loss<=2){
       return doubles*100*loss*2-(loss+double-1)*100;
