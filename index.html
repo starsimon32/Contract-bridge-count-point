@@ -1,7 +1,7 @@
 <! DOCTYPE html>
 <html>
 <head>
-<title>橋牌算分網站3</title>
+<title>4橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -15,7 +15,7 @@
     <option value="e">NT</option>
 </select>
   <button onclick="showNumber()">計算</button>
-  <button onclick="showpoints()">計算</button>
+  <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
   <p id="points"></p>
 <script>
@@ -43,7 +43,7 @@ function showNumber() {
       roundP+=30*input;
     }
     let totalscore=roundP;
-    document.getElementById("points").innerText = "每敦分數${roundP}，共${totalscore}分";
+    document.getElementById("points").innerText = `每敦分數${roundP}，共${totalscore}分`;
   }
 </script >
 </ body> </html>
