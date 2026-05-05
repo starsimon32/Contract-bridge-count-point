@@ -16,6 +16,7 @@
 </select>
   <input type="checkbox" id="bodyprice"> 身價
   <input type="text" id="doubles" placeholder="請輸入doubles">賭倍
+  <input type="text" id="Gresult" placeholder="請輸入結果">結果
   <button onclick="showNumber()">計算</button>
   <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
@@ -27,19 +28,21 @@ function showNumber() {
     let text = select.options[select.selectedIndex].text;
     let isChecked = document.getElementById("bodyprice").checked;
    let doubles = document.getElementById("doubles").value; 
+  let Gresult = document.getElementById("Gresult").value;
     let text2="";
     if (isChecked) {
         text2="有身價";
     } else {
        text2="沒身價";
     }
-    document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles;
+    document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles+"結果"+Gresult;
 }
 function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();  
     let prizepointscore=countprizepoints();
+  let Gresult =parseInt( document.getElementById("Gresult").value);
     let totalscore=roundP+prizepointscore;
     document.getElementById("points").innerText = `每敦分數共${roundP}，獎分${prizepointscore}，共${totalscore}分`;
   }
