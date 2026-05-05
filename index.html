@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>8橋牌算分網站</title>
+<title>9橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -46,7 +46,7 @@ function showpoints(){
     let prizepointscore=countprizepoints();
   let Gresult =parseInt( document.getElementById("Gresult").value);
   if(Gresult<input){
-    let a=countlosspoint();
+    let a=countlosspoint(doubles,input-Gresult,isChecked);
     document.getElementById("points").innerText = `倒${Gresult-input}敦，失去${a}分`;
     return 0;
   }
@@ -97,18 +97,24 @@ function countprizepoints(){
 return bonus;
 
 }
-  function countlosspoint(){
+  function countlosspoint(double,loss,vul){
      let input = parseInt(document.getElementById("numberInput").value); 
     let Gresult = parseInt(document.getElementById("Gresult").value);
     if(input<=Gresult) return 0;
     let doubles =parseInt( document.getElementById("doubles").value)||0;
     let isChecked = document.getElementById("bodyprice").checked;
-    if(isChecked){
-      return 50*(input-Gresult)*(2**doubles);
+    if(doubles==0){
+      let a=50*loss;
+      if(vul) a*=2;
+      return a;
     }
-    else{
-      return 100*(input-Gresult)*(2**doubles);
+    if(vul){
+      return 300*(loss)*(2**(doubles-1))-loss*100;
     }
+    if(vul==0 && loss<=2){
+      return doubles*100*loss*2-(loss+double-1)*100;
+    }
+    return countlosspoint(double,loss-2,true);
   }
   function countextra(type,over,double,vul){
     let bonus=0;
