@@ -47,10 +47,10 @@ function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=0;
-    let doubles =parseInt( document.getElementById("doubles").value);
+    let doubles =parseInt( document.getElementById("doubles").value)||0;
     if(select==""){
       document.getElementById("points").innerText = "無效合約";
-      return;
+      return 0;
     }
     if(select=="a"||select=="b"){
       roundP+=20*input;
@@ -61,7 +61,7 @@ function showpoints(){
     if(select=="e"){
       roundP+=30*input+10;
     }
-    return roundP*（2**doubles);
+    return roundP*(2**doubles);
   }
 function countprizepoints(){
     let isChecked = document.getElementById("bodyprice").checked;
@@ -85,4 +85,4 @@ return 0;
 
 }
 </script >
-</ body> </html>
+</body> </html>
