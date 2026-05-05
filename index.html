@@ -15,7 +15,7 @@
     <option value="e">NT</option>
 </select>
   <input type="checkbox" id="bodyprice"> 身價
-  <input type="text" id="doubles" placeholder="請輸入doubles">
+  <input type="text" id="doubles" placeholder="請輸入doubles">賭倍
   <button onclick="showNumber()">計算</button>
   <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
@@ -47,7 +47,7 @@ function showpoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=0;
-    let doubles = document.getElementById("doubles").value;
+    let doubles =parseInt( document.getElementById("doubles").value);
     if(select==""){
       document.getElementById("points").innerText = "無效合約";
       return;
