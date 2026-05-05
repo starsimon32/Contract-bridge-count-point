@@ -68,20 +68,22 @@ function countprizepoints(){
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP();
+  
+    let bonus=50*(parseInt( document.getElementById("doubles").value)||0);
     if(input>=7){
-      if(isChecked)return 2000;
-      else return 1300;
+      if(isChecked) bonus+=2000;
+      else bonus+=1300;
     }
     else if(input==6){
-      if(isChecked)return 1250;
-      else return 800;
+      if(isChecked) bonus+=1250;
+      else bonus+=800;
     }
   else if(roundP>=100){
-    if(isChecked)return 500;
-      else return 300;
+    if(isChecked) bonus+=500;
+      else bonus+=300;
   }
-  else return 50;
-return 0;
+  else bonus+=50;
+return bonus;
 
 }
 </script >
