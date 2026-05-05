@@ -6,13 +6,9 @@
 <body>
   <h1>請輸入你的合約 </h1>
   <input type="text" id="numberInput" placeholder="請輸入數字">
-  <button onclick="showNumber()">送出</button>
-  <button onclick="sayHi ()">計算</button>
+  <button onclick="showNumber()">計算</button>
   <p id="result"></p>
 <script>
-function sayHi() {
-alert（"成功了！"）；
-｝
 function showNumber() {
     let input = document.getElementById("numberInput").value;
     document.getElementById("result").innerText = "你輸入的是: " + input;
