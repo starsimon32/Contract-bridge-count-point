@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>11橋牌算分網站</title>
+<title>12橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -14,9 +14,14 @@
     <option value="d">spade</option>
     <option value="e">NT</option>
 </select>
-  <input type="checkbox" id="bodyprice"> 身價
-  <input type="text" id="doubles" placeholder="請輸入doubles">賭倍
-  <input type="text" id="Gresult" placeholder="請輸入結果">結果
+  身價<input type="checkbox" id="bodyprice"> <br>
+  賭背<input type="text" id="doubles" placeholder="請輸入doubles"><br>
+  結果<select id="resultMD">
+    <option value="">--請選擇--</option>
+    <option value="M">make</option>
+    <option value="D">down</option>
+</select><br>
+  <input type="text" id="Gresult" placeholder="結果是多少">
   <button onclick="showNumber()">計算</button>
   <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
@@ -77,7 +82,8 @@ function countprizepoints(){
     let isChecked = document.getElementById("bodyprice").checked;
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
-    let roundP=countroundP(select,contract,doubles);
+  let doubles = document.getElementById("doubles").value; 
+    let roundP=countroundP(select,input,doubles);
   
     let bonus=50*(parseInt( document.getElementById("doubles").value)||0);
     if(input>=7){
