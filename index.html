@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>20橋牌算分網站</title>
+<title>21橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -60,7 +60,7 @@ function showpoints(){
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP(select,input,doubles);  
     let prizepointscore=countprizepoints();
-  let Gresult =parseInt( document.getElementById("Gresult").value);
+  let Gresult =parseInt( document.getElementById("Gresult").value) || 0;
   let MD = document.getElementById("resultMD").value;
   if(MD=="D"){
     let a=countlosspoint(doubles,Gresult,isChecked);
@@ -127,7 +127,7 @@ return bonus;
       return  double*100*loss*2-(loss+double-1)*100;
       
     }
-    if(！vul&& loss<=2){
+    if(vul==false&& loss<=2){
       return -250*double - 300*loss + 450*double*loss + 300;
     }
     return countlosspoint(double,loss-2,true);
