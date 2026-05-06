@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>16橋牌算分網站</title>
+<title>17橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -32,7 +32,7 @@ function showNumber() {
     let select = document.getElementById("mySelect");
     let text = select.options[select.selectedIndex].text;
     let isChecked = document.getElementById("bodyprice").checked;
-   let doubles =parseInt( document.getElementById("doubles").value); 
+   let doubles =parseInt( document.getElementById("doubles").value) || 0; 
   let Gresult = document.getElementById("Gresult").value;
     let text2="結果：";
     if (isChecked) {
@@ -55,8 +55,8 @@ function showNumber() {
 }
 function showpoints(){
    let isChecked = document.getElementById("bodyprice").checked;
-   let doubles = document.getElementById("doubles").value; 
-    let input = parseInt(document.getElementById("numberInput").value);    
+   let doubles = parseInt(document.getElementById("doubles").value) ||0;
+  let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP(select,input,doubles);  
     let prizepointscore=countprizepoints();
@@ -116,7 +116,7 @@ return bonus;
 }
   function countlosspoint(double,loss,vul){
     if(loss<=0) {
-      alert("合約格式錯誤"）；
+      alert("合約格式錯誤")；
       return 0;
     }
     if(double==0){
@@ -144,7 +144,7 @@ return bonus;
       bonus+=30*over;
     }
     if(select=="e"){
-      bonus+=30*over+10;
+      bonus+=30*over;
     }
     }
     else{
