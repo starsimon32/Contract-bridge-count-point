@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>17橋牌算分網站</title>
+<title>18橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -33,14 +33,14 @@ function showNumber() {
     let text = select.options[select.selectedIndex].text;
     let isChecked = document.getElementById("bodyprice").checked;
    let doubles =parseInt( document.getElementById("doubles").value) || 0; 
-  let Gresult = document.getElementById("Gresult").value;
+  let Gresult = parseInt(document.getElementById("Gresult").value);
     let text2="結果：";
     if (isChecked) {
         text2="有身價";
     } else {
        text2="沒身價";
     }
-  text2+=input;
+  text2+=input+text;
   for(let i=1;i<=doubles;i++){
     text2+="X";
   }
@@ -94,7 +94,7 @@ function countprizepoints(){
     let isChecked = document.getElementById("bodyprice").checked;
     let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
-  let doubles = document.getElementById("doubles").value; 
+  let doubles = parseInt(document.getElementById("doubles").value); 
     let roundP=countroundP(select,input,doubles);
   
     let bonus=50*(parseInt( document.getElementById("doubles").value)||0);
@@ -116,7 +116,7 @@ return bonus;
 }
   function countlosspoint(double,loss,vul){
     if(loss<=0) {
-      alert("合約格式錯誤")；
+      alert(格式錯誤)；
       return 0;
     }
     if(double==0){
@@ -128,7 +128,7 @@ return bonus;
       return  double*100*loss*2-(loss+double-1)*100;
       
     }
-    if(vul==0 && loss<=2){
+    if(！vul&& loss<=2){
       return -250*double - 300*loss + 450*double*loss + 300;
     }
     return countlosspoint(double,loss-2,true);
