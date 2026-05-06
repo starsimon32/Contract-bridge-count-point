@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>22橋牌算分網站</title>
+<title>23橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -15,14 +15,14 @@
     <option value="e">NT</option>
 </select>
   身價<input type="checkbox" id="bodyprice"> <br>
-  賭背<input type="text" id="doubles" placeholder="請輸入doubles"><br>
+  賭倍<input type="text" id="doubles" placeholder="請輸入doubles"><br>
   結果(倒多少直接輸入數字即可，成輸入make多少）<select id="resultMD">
     <option value="">--請選擇--</option>
     <option value="M">make</option>
     <option value="D">down</option>
-</select><br>
-  <input type="text" id="Gresult" placeholder="結果是多少">
-  <button onclick="showNumber()">計算</button>
+  </select>
+  <input type="text" id="Gresult" placeholder="結果是多少"><br>
+  <button onclick="showNumber()">顯示結果</button>
   <button onclick="showpoints()">計算分數</button>
   <p id="result"></p>
   <p id="points"></p>
@@ -120,7 +120,7 @@ function countlosspoint(double,loss,vul){
       return a;
     }
     if(vul){
-      return  double*100*loss*2-(loss+double-1)*100;
+      return  double*100*loss*2-double*100;
       
     }
     if(vul==false&& loss<=2){
