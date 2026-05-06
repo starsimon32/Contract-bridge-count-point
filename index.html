@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>12橋牌算分網站</title>
+<title>13橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -16,7 +16,7 @@
 </select>
   身價<input type="checkbox" id="bodyprice"> <br>
   賭背<input type="text" id="doubles" placeholder="請輸入doubles"><br>
-  結果<select id="resultMD">
+  結果(倒多少直接輸入數字即可，成輸入make多少）<select id="resultMD">
     <option value="">--請選擇--</option>
     <option value="M">make</option>
     <option value="D">down</option>
@@ -50,9 +50,10 @@ function showpoints(){
     let roundP=countroundP(select,input,doubles);  
     let prizepointscore=countprizepoints();
   let Gresult =parseInt( document.getElementById("Gresult").value);
-  if(Gresult<input){
-    let a=countlosspoint(doubles,input-Gresult,isChecked);
-    document.getElementById("points").innerText = `倒${Gresult-input}敦，失去${a}分`;
+  let MD = document.getElementById("resultMD").value;
+  if(GresultMD="D"){
+    let a=countlosspoint(doubles,Gresult,isChecked);
+    document.getElementById("points").innerText = `倒${-Gresult+input}敦，失去${a}分`;
     return 0;
   }
   let over=countextra(select,(Gresult-input),doubles,isChecked);
