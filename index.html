@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>15橋牌算分網站</title>
+<title>16橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -115,19 +115,21 @@ return bonus;
 
 }
   function countlosspoint(double,loss,vul){
-     let input = parseInt(document.getElementById("numberInput").value); 
-    let Gresult = parseInt(document.getElementById("Gresult").value);
-    if(input<=Gresult) return 0;
+    if(loss<=0) {
+      alert("合約格式錯誤"）；
+      return 0;
+    }
     if(double==0){
       let a=50*loss;
       if(vul) a*=2;
       return a;
     }
     if(vul){
-      return -250*double - 300*loss + 450*double*loss + 300;
+      return  double*100*loss*2-(loss+double-1)*100;
+      
     }
     if(vul==0 && loss<=2){
-      return doubles*100*loss*2-(loss+double-1)*100;
+      return -250*double - 300*loss + 450*double*loss + 300;
     }
     return countlosspoint(double,loss-2,true);
   }
