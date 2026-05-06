@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>21橋牌算分網站</title>
+<title>22橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -59,7 +59,7 @@ function showpoints(){
   let input = parseInt(document.getElementById("numberInput").value);    
     let select = document.getElementById("mySelect").value;
     let roundP=countroundP(select,input,doubles);  
-    let prizepointscore=countprizepoints();
+    let prizepointscore=countprizepoints(input,select,doubles,isChecked);
   let Gresult =parseInt( document.getElementById("Gresult").value) || 0;
   let MD = document.getElementById("resultMD").value;
   if(MD=="D"){
@@ -90,11 +90,7 @@ function showpoints(){
     }
     return roundP*(2**doubles);
   }
-function countprizepoints(){
-    let isChecked = document.getElementById("bodyprice").checked;
-    let input = parseInt(document.getElementById("numberInput").value);    
-    let select = document.getElementById("mySelect").value;
-  let doubles = parseInt(document.getElementById("doubles").value); 
+function countprizepoints(input,select,doubles,isChecked){
     let roundP=countroundP(select,input,doubles);
   
     let bonus=50*(parseInt( document.getElementById("doubles").value)||0);
@@ -114,7 +110,7 @@ function countprizepoints(){
 return bonus;
 
 }
-  function countlosspoint(double,loss,vul){
+function countlosspoint(double,loss,vul){
     if(loss<=0) {
       return 0;
     }
