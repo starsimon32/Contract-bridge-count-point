@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>13橋牌算分網站</title>
+<title>14橋牌算分網站</title>
 </head>
 <body>
   <h1>橋牌算分網站 </h1>
@@ -34,13 +34,24 @@ function showNumber() {
     let isChecked = document.getElementById("bodyprice").checked;
    let doubles = document.getElementById("doubles").value; 
   let Gresult = document.getElementById("Gresult").value;
-    let text2="";
+    let text2="結果：";
     if (isChecked) {
         text2="有身價";
     } else {
        text2="沒身價";
     }
-    document.getElementById("result").innerText = "你輸入的是:" + input + text +text2+"賭倍"+doubles+"結果"+Gresult;
+  text2+="input";
+  for(int i=1;i<=doubles;i++){
+    text2+="X";
+  }
+  let MD = document.getElementById("resultMD").value;
+  if(MD=="M"){
+    text2+=`+${Gresult-input}`;
+  }
+  else{
+    text2+=`-${Gresult}`;
+  }
+    document.getElementById("result").innerText =  text2;
 }
 function showpoints(){
    let isChecked = document.getElementById("bodyprice").checked;
@@ -53,7 +64,7 @@ function showpoints(){
   let MD = document.getElementById("resultMD").value;
   if(GresultMD="D"){
     let a=countlosspoint(doubles,Gresult,isChecked);
-    document.getElementById("points").innerText = `倒${-Gresult+input}敦，失去${a}分`;
+    document.getElementById("points").innerText = `倒${Gresult}敦，失去${a}分`;
     return 0;
   }
   let over=countextra(select,(Gresult-input),doubles,isChecked);
